@@ -1,0 +1,5 @@
+c:\Projects\Prototypes\WCF - Rest Authentication\WCF - Rest Authentication\bin\WcfRestAuthentication.dll.config
+c:\Projects\Prototypes\WCF - Rest Authentication\WCF - Rest Authentication\bin\WcfRestAuthentication.dll
+c:\Projects\Prototypes\WCF - Rest Authentication\WCF - Rest Authentication\bin\WcfRestAuthentication.pdb
+c:\Projects\Prototypes\WCF - Rest Authentication\WCF - Rest Authentication\obj\Debug\WcfRestAuthentication.dll
+c:\Projects\Prototypes\WCF - Rest Authentication\WCF - Rest Authentication\obj\Debug\WcfRestAuthentication.pdb
