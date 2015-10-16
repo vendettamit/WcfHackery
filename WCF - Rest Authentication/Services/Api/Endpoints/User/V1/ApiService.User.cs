@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Net;
-using System.ServiceModel.Web;
 using WcfRestAuthentication.Model;
 using WcfRestAuthentication.Services.Api.Endpoints.User;
 
@@ -12,7 +10,6 @@ namespace WcfRestAuthentication.Services.Api
 
         public User Get(Guid userId)
         {
-            throw new WebFaultException<string>("You can't do that", HttpStatusCode.InternalServerError);
             return CreateTestUser(userId);
         }
 
