@@ -23,28 +23,10 @@ namespace WcfRestAuthentication.Services.Api.Endpoints.User.V1.Behaviors
             _messageInspectors = messageInspectors;
         }
 
-        protected override IDispatchMessageFormatter GetRequestDispatchFormatter(OperationDescription operationDescription, ServiceEndpoint endpoint)
-        {
-            foreach (var item in operationDescription.Messages[0].Body.Parts)
-            {
-                item.Type = typeof(string);
-            }
-
-            return base.GetRequestDispatchFormatter(operationDescription, endpoint);
-        }
-
         public override void ApplyDispatchBehavior(ServiceEndpoint endpoint, EndpointDispatcher endpointDispatcher)
         {
             if (_messageInspectors.Any())
                 endpointDispatcher.AddMessageInspectors(_messageInspectors);
-
-            foreach (var operation in endpoint.Contract.Operations)
-            {
-                if (operation.Behaviors.Contains(typeof(UserEndpointWebHttpGetOperationBehavior)))
-                    continue;
-
-                operation.Behaviors.Add(new UserEndpointWebHttpGetOperationBehavior());
-            }
 
             base.ApplyDispatchBehavior(endpoint, endpointDispatcher);
         }
