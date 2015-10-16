@@ -66,6 +66,11 @@ dlldata.c
 *.pidb
 *.svclog
 *.scc
+*.dll
+*.dll.config
+*.pdb
+*.cache
+*.FileListAbsolute.txt
 # Logs
 _Chutzpah*
 
