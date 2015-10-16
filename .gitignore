@@ -5,14 +5,6 @@
 [Bb]uild/[Bb]uildinfo.xml
 [Bb]uild/osis-tests
 [Pp]ackages/
-[Tt]ools/[Ss]earch/.vagrant
-[Tt]ools/[Ss]earch/.vagrant.d
-[Tt]ools/[Ii]mageserver/.vagrant
-[Tt]ools/[Ii]mageserver/.vagrant.d
-[Tt]ools/[Dd]evbox/.vagrant
-[Tt]ools/[Dd]evbox/.vagrant.d
-[Ss]rc/Kobo.Web.Assets/output
-[Ss]rc/Kobo.Web.Assets/output.zip
 [Bb]uild[Oo]utput
 
 # mstest test results
@@ -176,13 +168,11 @@ UpgradeLog*.htm
 *.bak
 *.orig
 *.mdf
-src/Store - full.sln.DotSettings
+src/*.sln.DotSettings
 _NCrunch_Store - full
 /build/buildinfo.xml
 *.ldf
 # UI Sandbox (PROTOTYPE intended to be linked to PrometheusUI for UI development)
-# https://talk.kobobooks.com/display/Kobo/Core+Concepts#CoreConcepts-PROTOTYPEIntegrationwithOneStore
-src/Kobo.Web.Assets/PROTOTYPE
 
 # IDE system files (RubyMine)
 .idea
@@ -194,12 +184,9 @@ src/Kobo.Web.Assets/PROTOTYPE
 NDependOut
 *.bim.layout
 # imager
-tools/imageserver/imager
-tools/devbox/imager
 *.bim_*.settings
 
 # Internal Services log
-src/Kobo.Web.Store/UpgradeLog.htm
 # Microsoft Fakes
 # misc
 .DS_Store
@@ -215,4 +202,3 @@ Iesi.Collections.*
 Newtonsoft.Json.*
 *.nupkg
 build/output.dat
-MockExternalServices/App_Data/logs/
