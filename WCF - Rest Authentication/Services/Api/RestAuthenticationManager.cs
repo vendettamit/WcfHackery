@@ -4,7 +4,6 @@ using System.IdentityModel.Policy;
 using System.Security.Principal;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
-using System.Threading;
 using System.Web;
 
 namespace WcfRestAuthentication.Services.Api
@@ -44,17 +43,6 @@ namespace WcfRestAuthentication.Services.Api
             HttpContext.Current.Response.StatusDescription = "Unauthorized";
             HttpContext.Current.Response.Headers.Add("WWW-Authenticate", string.Format("{0} realm=\"{1}\"", "Basic", "site"));
             HttpContext.Current.Response.End();
-        }
-    }
-
-    public class RestAuthorizationManager : ServiceAuthorizationManager
-    {
-        protected override bool CheckAccessCore(OperationContext operationContext)
-        {
-            operationContext.ServiceSecurityContext.AuthorizationContext.Properties["Principal"] =
-                Thread.CurrentPrincipal;
-
-            return base.CheckAccessCore(operationContext);
         }
     }
 }
