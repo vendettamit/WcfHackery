@@ -13,9 +13,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WcfRestAuthentication</RootNamespace>
     <AssemblyName>WcfRestAuthentication</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -64,6 +64,10 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebHttpBehaviorExtensions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebHttpBehaviorExtensions.1.0.0-alpha\lib\net45\WebHttpBehaviorExtensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -76,10 +80,6 @@
     <Compile Include="Services\Api\Common\MessageInspectors\AuthorizedAuthenticationProvider.cs" />
     <Compile Include="Services\Api\Endpoints\Product\V1\Behaviors\ProductEndpointWebHttpBehavior.cs" />
     <Compile Include="Services\Api\Endpoints\Product\V1\Behaviors\ProductEndpointWebHttpBehaviorExtension.cs" />
-    <Compile Include="Services\Api\Endpoints\Product\V1\Behaviors\ProductEndpointWebHttpGetOperationBehavior.cs" />
-    <Compile Include="Services\Api\Endpoints\Product\V1\Behaviors\TypeConverterInvoker.cs" />
-    <Compile Include="Services\Api\Endpoints\User\V1\Behaviors\TypeConverterInvoker.cs" />
-    <Compile Include="Services\Api\Endpoints\User\V1\Behaviors\UserEndpointWebHttpGetOperationBehavior.cs" />
     <Compile Include="Services\Api\Endpoints\User\V1\Behaviors\UserEndpointWebHttpBehavior.cs" />
     <Compile Include="Services\Api\Endpoints\User\V1\Behaviors\UserEndpointWebHttpBehaviorExtension.cs" />
     <Compile Include="Services\Api\ApiService.cs" />
@@ -104,6 +104,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <None Include="Properties\PublishProfiles\LocalIIS.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -126,7 +127,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>42086</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:42086/</IISUrl>
+          <IISUrl>http://localhost/WCFRestAuthentication</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

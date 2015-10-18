@@ -48,26 +48,7 @@ namespace WcfRestAuthentication.Services.Api.Endpoints.Product.V1.Behaviors
             if (_messageInspectors.Any())
                 endpointDispatcher.AddMessageInspectors(_messageInspectors);
 
-            foreach (var operation in endpoint.Contract.Operations)
-            {
-                if (operation.Behaviors.Contains(typeof(ProductEndpointWebHttpGetOperationBehavior)))
-                    continue;
-
-                operation.Behaviors.Add(new ProductEndpointWebHttpGetOperationBehavior());
-            }
-
             base.ApplyDispatchBehavior(endpoint, endpointDispatcher);
-        }
-
-        protected override IDispatchMessageFormatter GetRequestDispatchFormatter(OperationDescription operationDescription,
-            ServiceEndpoint endpoint)
-        {
-            foreach (var item in operationDescription.Messages[0].Body.Parts)
-            {
-                item.Type = typeof(string);
-            }
-
-            return base.GetRequestDispatchFormatter(operationDescription, endpoint);
         }
 
         public override void Validate(ServiceEndpoint endpoint)
