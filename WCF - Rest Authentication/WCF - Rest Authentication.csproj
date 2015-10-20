@@ -94,6 +94,11 @@
     <Compile Include="Model\User.cs" />
     <Compile Include="Services\Api\Common\AuthenticationHeader.cs" />
     <Compile Include="Services\Api\RestAuthorizationManager.cs" />
+    <Compile Include="Services\AuthContext.cs" />
+    <Compile Include="Services\BasicAuthenticationProvider.cs" />
+    <Compile Include="Services\IAuthorizationProvider.cs" />
+    <Compile Include="Services\OAuthAuthenticationProvider.cs" />
+    <Compile Include="Services\OAuthBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
