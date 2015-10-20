@@ -64,6 +64,10 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebHttpBehaviorExtensions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WebHttpBehaviorExtensions.1.0.0-alpha\lib\net45\WebHttpBehaviorExtensions.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -103,12 +107,6 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\WebHttpBehaviorExtensions\src\WebHttpBehaviorExtensions\WebHttpBehaviorExtensions.csproj">
-      <Project>{e64b7218-3a6c-44e4-8a73-c2813110f733}</Project>
-      <Name>WebHttpBehaviorExtensions</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
