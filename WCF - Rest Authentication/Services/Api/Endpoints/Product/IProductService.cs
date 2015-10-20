@@ -11,7 +11,7 @@ namespace WcfRestAuthentication.Services.Api.Endpoints.Product
     {
 
         [OperationContract]
-        [WebInvoke(Method = "GET", UriTemplate = "/{categoryId}?pageIndex={pageIndex}&pageSize={pageSize}"), UriTemplateSafe]
+        [UriTemplateSafe, WebInvoke(Method = "GET", UriTemplate = "/{categoryId}?pageIndex={pageIndex}&pageSize={pageSize}")]
         IEnumerable<Model.Product> GetList(Guid categoryId, int pageIndex, int pageSize);
 
         [OperationContract]

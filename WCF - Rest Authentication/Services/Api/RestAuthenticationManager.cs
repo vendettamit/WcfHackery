@@ -8,41 +8,43 @@ using System.Web;
 
 namespace WcfRestAuthentication.Services.Api
 {
-    public class RestAuthenticationManager : ServiceAuthenticationManager
-    {
-        public override ReadOnlyCollection<IAuthorizationPolicy> Authenticate(ReadOnlyCollection<IAuthorizationPolicy> authPolicy, Uri listenUri, ref Message message)
-        {
-            var requestProperties =
-                (HttpRequestMessageProperty)message.Properties[HttpRequestMessageProperty.Name];
+    //public class RestAuthenticationManager : ServiceAuthenticationManager
+    //{
+    //    public override ReadOnlyCollection<IAuthorizationPolicy> Authenticate(ReadOnlyCollection<IAuthorizationPolicy> authPolicy, Uri listenUri, ref Message message)
+    //    {
+    //        return base.Authenticate(authPolicy, listenUri, ref message);
 
-            var rawAuthHeader = requestProperties.Headers["Authorization"];
+    //        var requestProperties =
+    //            (HttpRequestMessageProperty)message.Properties[HttpRequestMessageProperty.Name];
 
-            AuthenticationHeader authHeader = null;
-            if (AuthenticationHeader.TryDecode(rawAuthHeader, out authHeader)) ;
-            {
-                var identity = new GenericIdentity(authHeader.Username);
-                var principal = new GenericPrincipal(identity, new string[] { });
+    //        var rawAuthHeader = requestProperties.Headers["Authorization"];
 
-                var httpContext = new HttpContextWrapper(HttpContext.Current)
-                {
-                    User = principal,
-                };
+    //        AuthenticationHeader authHeader = null;
+    //        if (AuthenticationHeader.TryDecode(rawAuthHeader, out authHeader))
+    //        {
+    //            var identity = new GenericIdentity(authHeader.Username);
+    //            var principal = new GenericPrincipal(identity, new string[] { });
 
-                if (httpContext.User != null)
-                    return authPolicy;
-            }
+    //            var httpContext = new HttpContextWrapper(HttpContext.Current)
+    //            {
+    //                User = principal,
+    //            };
 
-            SendUnauthorizedResponse();
+    //            if (httpContext.User != null)
+    //                return authPolicy;
+    //        }
 
-            return base.Authenticate(authPolicy, listenUri, ref message);
-        }
+    //        SetUnauthorizedResponse();
 
-        private void SendUnauthorizedResponse()
-        {
-            HttpContext.Current.Response.StatusCode = 401;
-            HttpContext.Current.Response.StatusDescription = "Unauthorized";
-            HttpContext.Current.Response.Headers.Add("WWW-Authenticate", string.Format("{0} realm=\"{1}\"", "Basic", "site"));
-            HttpContext.Current.Response.End();
-        }
-    }
+    //        return base.Authenticate(authPolicy, listenUri, ref message);
+    //    }
+
+    //    private void SetUnauthorizedResponse()
+    //    {
+    //        HttpContext.Current.Response.StatusCode = 401;
+    //        HttpContext.Current.Response.StatusDescription = "Unauthorized";
+    //        HttpContext.Current.Response.Headers.Add("WWW-Authenticate", string.Format("{0} realm=\"{1}\"", "Basic", "site"));
+    //        HttpContext.Current.Response.End();
+    //    }
+    //}
 }
