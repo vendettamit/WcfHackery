@@ -1,19 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace WcfRestAuthentication.Services
 {
-    /// <summary>
-    /// The reference to the object of any custom authorization provider.
-    /// </summary>
-    /// <returns></returns>
-    public delegate IAuthorizationProvider CustomAuthorizationProvider();
-
     public static class AuthContext
     {
-        private static CustomAuthorizationProvider currentProvider;
+        private static Func<IAuthorizationProvider> _currentProvider;
 
         /// <summary>
         /// The current ambient container.
@@ -24,7 +15,7 @@ namespace WcfRestAuthentication.Services
             {
                 if (!IsCustomAuthorizationProviderSet) throw new InvalidOperationException("No authorization strategy found!");
 
-                return currentProvider();
+                return _currentProvider();
             }
         }
 
@@ -33,16 +24,16 @@ namespace WcfRestAuthentication.Services
         /// </summary>
         /// <param name="newProvider">Delegate that, when called, will return
         /// the current ambient container.</param>
-        public static void SetAuthorizationProvider(CustomAuthorizationProvider newProvider)
+        public static void SetAuthorizationProvider(Func<IAuthorizationProvider> newProvider)
         {
-            currentProvider = newProvider;
+            _currentProvider = newProvider;
         }
 
         public static bool IsCustomAuthorizationProviderSet
         {
             get
             {
-                return currentProvider != null;
+                return _currentProvider != null;
             }
         }
     }
