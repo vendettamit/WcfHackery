@@ -2,6 +2,7 @@
 using System.Web.Routing;
 using System.ServiceModel.Activation;
 using WcfRestAuthentication.Services.Api;
+using WcfRestAuthentication.Services;
 
 namespace WcfRestAuthentication
 {
@@ -12,6 +13,8 @@ namespace WcfRestAuthentication
         {
             MapRoutes(RouteTable.Routes);
 
+            //AuthContext.SetAuthorizationProvider(() => new OAuthAuthenticationProvider());
+            AuthContext.SetAuthorizationProvider(() => new BasicAuthenticationProvider());
         }
 
         private void MapRoutes(RouteCollection routes)

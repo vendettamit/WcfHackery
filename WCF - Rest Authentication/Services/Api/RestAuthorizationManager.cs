@@ -1,4 +1,8 @@
-﻿using System.ServiceModel;
+﻿using System;
+using System.Net;
+using System.ServiceModel;
+using System.ServiceModel.Channels;
+using System.ServiceModel.Web;
 using System.Threading;
 
 namespace WcfRestAuthentication.Services.Api
@@ -7,10 +11,12 @@ namespace WcfRestAuthentication.Services.Api
     {
         protected override bool CheckAccessCore(OperationContext operationContext)
         {
-            operationContext.ServiceSecurityContext.AuthorizationContext.Properties["Principal"] =
-                Thread.CurrentPrincipal;
+            if (AuthContext.Current == null)
+            {
+                return base.CheckAccess(operationContext);
+            }
 
-            return base.CheckAccessCore(operationContext);
+            return AuthContext.Current.Authenticate(operationContext);
         }
     }
 }

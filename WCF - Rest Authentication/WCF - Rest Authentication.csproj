@@ -65,8 +65,8 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="WebHttpBehaviorExtensions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\WebHttpBehaviorExtensions.1.0.0-alpha\lib\net45\WebHttpBehaviorExtensions.dll</HintPath>
-      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -74,10 +74,8 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Services\Api\RestAuthenticationManager.cs" />
     <Compile Include="Extensions\EndpointDispatcherExtensions.cs" />
     <Compile Include="Extensions\ObjectExtensions.cs" />
-    <Compile Include="Services\Api\Common\MessageInspectors\AuthorizedAuthenticationProvider.cs" />
     <Compile Include="Services\Api\Endpoints\Product\V1\Behaviors\ProductEndpointWebHttpBehavior.cs" />
     <Compile Include="Services\Api\Endpoints\Product\V1\Behaviors\ProductEndpointWebHttpBehaviorExtension.cs" />
     <Compile Include="Services\Api\Endpoints\User\V1\Behaviors\UserEndpointWebHttpBehavior.cs" />
@@ -94,10 +92,13 @@
     <Compile Include="Model\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\User.cs" />
-    <Compile Include="Services\Api\Common\MessageInspectors\ApiServiceAuthenticationMessageInspector.cs" />
-    <Compile Include="Services\Api\Common\MessageInspectors\AuthenticationHeader.cs" />
-    <Compile Include="Services\Api\Common\MessageInspectors\IAuthenticationProvider.cs" />
+    <Compile Include="Services\Api\Common\AuthenticationHeader.cs" />
     <Compile Include="Services\Api\RestAuthorizationManager.cs" />
+    <Compile Include="Services\AuthContext.cs" />
+    <Compile Include="Services\BasicAuthenticationProvider.cs" />
+    <Compile Include="Services\IAuthorizationProvider.cs" />
+    <Compile Include="Services\OAuthAuthenticationProvider.cs" />
+    <Compile Include="Services\OAuthBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
